@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>סידור הרכבי כדורגל</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="versionBadge" class="version-badge">v1.4.1</div>
+    <main class="app-shell">
+      <aside class="panel">
+        <div class="brand-block">
+          <p class="eyebrow">סידור כדורגל <span id="appVersion" class="app-version">v1.4.1</span></p>
+          <h1>הרכבי המשחק</h1>
+        </div>
+
+        <section class="control-section" aria-labelledby="add-player-title">
+          <div class="section-title">
+            <h2 id="add-player-title">שחקן חדש</h2>
+            <span id="playerCount">0 שחקנים</span>
+          </div>
+          <form id="playerForm" class="player-form">
+            <label>
+              שם
+              <input id="playerName" name="playerName" type="text" placeholder="למשל: אבי כהן" autocomplete="off" required />
+            </label>
+            <label>
+              תמונה
+              <input id="playerImage" name="playerImage" type="file" accept="image/*" />
+            </label>
+            <div class="form-actions">
+              <button type="submit">הוסף שחקן</button>
+              <button id="demoBtn" class="ghost-button" type="button">דמו</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="control-section" aria-labelledby="teams-title">
+          <div class="section-title">
+            <h2 id="teams-title">קבוצות</h2>
+            <button id="addTeamBtn" class="ghost-button" type="button">+ קבוצה</button>
+          </div>
+          <div id="teamList" class="team-list"></div>
+        </section>
+
+        <section class="control-section" aria-labelledby="pool-title">
+          <div class="section-title">
+            <h2 id="pool-title">שחקנים בחוץ</h2>
+            <button id="resetBtn" class="ghost-button danger" type="button">נקה מגרש</button>
+          </div>
+          <div id="bench" class="bench" aria-label="שחקנים שלא שובצו"></div>
+        </section>
+      </aside>
+
+      <section class="workspace" aria-labelledby="field-title">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">קנבס מגרש</p>
+            <h2 id="field-title">הרכבי 5</h2>
+          </div>
+          <div class="top-actions">
+            <button id="autoArrangeBtn" type="button">סדר אוטומטית</button>
+            <button id="exportPdfBtn" type="button">הורד PDF</button>
+            <button id="clearAllBtn" class="ghost-button danger" type="button">איפוס מלא</button>
+          </div>
+        </header>
+
+        <div class="field-scroll">
+          <div id="fields" class="fields" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <template id="playerTemplate">
+      <div class="player-chip" role="button" tabindex="0" draggable="true">
+        <span class="avatar" aria-hidden="true"></span>
+        <span class="player-name"></span>
+        <button class="delete-player" type="button" aria-label="מחק שחקן">×</button>
+      </div>
+    </template>
+
+    <script src="app.js?v=1.4.1"></script>
+  </body>
+</html>
