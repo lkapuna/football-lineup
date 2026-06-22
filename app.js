@@ -1,5 +1,5 @@
 const STORAGE_KEY = "football-lineup-builder-v1";
-const APP_VERSION = "1.4.2";
+const APP_VERSION = "1.4.3";
 const TEAM_COLORS = ["#f4f4f4", "#0f172a", "#2f80ed", "#ef4444", "#facc15", "#22c55e"];
 const FORMATION = [
   { x: 50, y: 18 },

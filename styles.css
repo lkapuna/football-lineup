@@ -339,7 +339,7 @@ button {
   min-height: 118px;
   border: 0;
   background: transparent;
-  color: #050806;
+  color: #050806 !important;
   padding: 0;
   text-shadow:
     0 1px 0 rgba(255, 255, 255, 0.95),
@@ -386,7 +386,7 @@ button {
 
 .field-player .player-name {
   width: 118px;
-  color: #050806;
+  color: #050806 !important;
   font-size: 18px;
   line-height: 1.08;
   text-align: center;
