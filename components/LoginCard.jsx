@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { api, fileToDataUrl, setStoredPlayer } from "@/lib/client";
 
-export default function LoginCard({ currentPlayer, onLogin }) {
-  const [name, setName] = useState(currentPlayer?.name || "");
-  const [phone, setPhone] = useState(currentPlayer?.phone || "");
-  const [imageUrl, setImageUrl] = useState(currentPlayer?.imageUrl || "");
+export default function LoginCard({ onLogin }) {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -50,10 +50,15 @@ export default function LoginCard({ currentPlayer, onLogin }) {
           תמונה
           <input className="input" type="file" accept="image/*" onChange={handleFile} />
         </label>
-        {imageUrl ? <div className="mini muted">תמונה נטענה</div> : null}
+        {imageUrl ? (
+          <div className="inline-actions">
+            <div className="mini muted">תמונה נטענה</div>
+            <button className="button danger" type="button" onClick={() => setImageUrl("")}>הסר תמונה</button>
+          </div>
+        ) : null}
         {error ? <div className="mini" style={{ color: "var(--red)" }}>{error}</div> : null}
         <button className="button" disabled={loading}>
-          {loading ? "נכנס..." : currentPlayer ? "עדכן פרטים" : "כניסה"}
+          {loading ? "נכנס..." : "כניסה"}
         </button>
       </form>
     </section>

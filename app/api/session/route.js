@@ -16,20 +16,30 @@ export async function POST(request) {
     }
 
     const admin = isAdminPhone(phone);
-    const player = await Player.findOneAndUpdate(
-      { phone },
-      {
-        $setOnInsert: { phone },
-        $set: {
-          name,
-          ...(imageUrl ? { imageUrl } : {}),
-          isAdmin: admin,
-        },
-      },
-      { upsert: true, new: true }
-    ).lean();
+    const existingPlayer = await Player.findOne({ phone });
+    if (existingPlayer) {
+      if (existingPlayer.name.trim() !== name) {
+        return NextResponse.json(
+          { error: "השם והטלפון לא תואמים לשחקן קיים" },
+          { status: 409 }
+        );
+      }
+      existingPlayer.isAdmin = admin || existingPlayer.isAdmin;
+      await existingPlayer.save();
+      return NextResponse.json({
+        player: existingPlayer.toObject(),
+        isAdmin: admin || existingPlayer.isAdmin,
+      });
+    }
 
-    return NextResponse.json({ player, isAdmin: admin || player.isAdmin });
+    const player = await Player.create({
+      phone,
+      name,
+      imageUrl,
+      isAdmin: admin,
+    });
+
+    return NextResponse.json({ player: player.toObject(), isAdmin: admin || player.isAdmin });
   } catch (error) {
     console.error("POST /api/session failed", error);
     return NextResponse.json({ error: error.message || "כניסה נכשלה" }, { status: 500 });

@@ -12,6 +12,11 @@ export async function POST(request) {
   }
 
   const game = await getCurrentGame();
+  if (body.teamId === "outside") {
+    await Game.updateOne({ _id: game._id }, { $pull: { "teams.$[].players": body.playerId } });
+    return NextResponse.json({ ok: true });
+  }
+
   const team = game.teams.find((item) => item.id === body.teamId);
   if (!team) return NextResponse.json({ error: "קבוצה לא נמצאה" }, { status: 404 });
   if (!body.overrideLimit && team.players.length >= team.maxPlayers) {
@@ -19,11 +24,9 @@ export async function POST(request) {
   }
 
   await Game.updateOne({ _id: game._id }, { $pull: { "teams.$[].players": body.playerId } });
-  if (body.teamId !== "outside") {
-    await Game.updateOne(
-      { _id: game._id, "teams.id": body.teamId },
-      { $addToSet: { "teams.$.players": body.playerId } }
-    );
-  }
+  await Game.updateOne(
+    { _id: game._id, "teams.id": body.teamId },
+    { $addToSet: { "teams.$.players": body.playerId } }
+  );
   return NextResponse.json({ ok: true });
 }

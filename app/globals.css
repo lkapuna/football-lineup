@@ -382,6 +382,16 @@ a {
   text-align: center;
 }
 
+.login-page {
+  display: grid;
+  min-height: calc(100vh - 30px);
+  place-items: center;
+}
+
+.login-panel {
+  width: min(460px, 100%);
+}
+
 .app-credit {
   position: fixed;
   right: 10px;

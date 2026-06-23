@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import LoginCard from "@/components/LoginCard";
 import LineupBoard from "@/components/LineupBoard";
 import { api, clearStoredPlayer, getStoredPlayer } from "@/lib/client";
 import { APP_VERSION } from "@/lib/version";
+import ProfileCard from "@/components/ProfileCard";
 
 export default function HomePage() {
   const [player, setPlayer] = useState(null);
@@ -43,21 +43,18 @@ export default function HomePage() {
             <p className="eyebrow">מערכת הרכבים v{APP_VERSION}</p>
             <h1>הרכבי כדורגל שבועיים</h1>
           </div>
-          <LoginCard currentPlayer={player} onLogin={setPlayer} />
           {player ? (
-            <section className="card">
-              <h2 className="card-title">המשתמש שלי</h2>
-              <div className="list-row">
-                <div className="avatar">{player.imageUrl ? <img src={player.imageUrl} alt={player.name} /> : player.name?.[0]}</div>
-                <div>
-                  <strong>{player.name}</strong>
-                  <div className="mini muted">{player.phone}</div>
-                </div>
-                <button className="button danger" onClick={logout}>יציאה</button>
-              </div>
+            <>
+              <ProfileCard player={player} onUpdate={setPlayer} onLogout={logout} />
               {player.isAdmin ? <Link className="button" href="/admin">ניהול אדמין</Link> : null}
+            </>
+          ) : (
+            <section className="card">
+              <h2 className="card-title">כניסת משתמש</h2>
+              <p className="muted">כדי להצטרף לקבוצה, לבקש מעבר או להיכנס כאדמין צריך להתחבר קודם.</p>
+              <Link className="button" href="/login">כניסה / משתמש אחר</Link>
             </section>
-          ) : null}
+          )}
         </aside>
         {loading ? <section className="surface empty">טוען...</section> : loadError ? (
           <section className="surface empty">
