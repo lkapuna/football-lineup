@@ -1,1 +1,5 @@
 .npm-cache/
+.next/
+node_modules/
+.env.local
+pitch-sketch-page1.png

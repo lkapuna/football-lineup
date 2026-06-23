@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: football-lineup
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: ADMIN_PHONE_NUMBERS
+        sync: false
+      - key: NEXT_PUBLIC_APP_URL
+        sync: false
