@@ -367,6 +367,27 @@ a {
   background: #fff;
 }
 
+.quick-add-panel {
+  display: grid;
+  grid-template-columns: minmax(130px, auto) minmax(180px, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fffdf7;
+}
+
+.compact-select {
+  width: auto;
+  min-width: 110px;
+}
+
+.add-player-card {
+  grid-column: 1 / -1;
+}
+
 .drag-over {
   outline: 4px solid rgba(255, 235, 88, 0.9);
   outline-offset: -8px;
@@ -490,6 +511,31 @@ a {
     min-height: 38px;
     padding: 8px 10px;
     font-size: 13px;
+  }
+
+  .quick-add-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .add-player-card {
+    order: 10;
+  }
+
+  .admin-player-row {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .admin-player-row .inline-actions {
+    grid-column: 1 / -1;
+  }
+
+  .compact-select {
+    width: 100%;
   }
 
   .app-credit {

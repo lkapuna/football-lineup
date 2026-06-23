@@ -11,6 +11,8 @@ export default function AdminDashboard() {
   const [players, setPlayers] = useState([]);
   const [dragPlayerId, setDragPlayerId] = useState("");
   const [message, setMessage] = useState("");
+  const [quickAddTeamId, setQuickAddTeamId] = useState("");
+  const [quickAddPlayerId, setQuickAddPlayerId] = useState("");
   const [newPlayer, setNewPlayer] = useState({ name: "", phone: "", imageUrl: "", teamId: "" });
 
   async function refresh() {
@@ -103,6 +105,13 @@ export default function AdminDashboard() {
     setNewPlayer((current) => ({ ...current, imageUrl }));
   }
 
+  async function quickAddToTeam(event) {
+    event.preventDefault();
+    if (!quickAddTeamId || !quickAddPlayerId) return;
+    await movePlayer(quickAddPlayerId, quickAddTeamId);
+    setQuickAddPlayerId("");
+  }
+
   const assignedIds = new Set(game?.teams.flatMap((team) => team.players.map((player) => String(player._id))) || []);
   const outsidePlayers = players.filter((player) => !assignedIds.has(String(player._id)));
 
@@ -166,27 +175,55 @@ export default function AdminDashboard() {
                     </div>
                   ))}
                 </div>
+                <div className="team-footer">
+                  <button
+                    className="button secondary"
+                    type="button"
+                    onClick={() => {
+                      setQuickAddTeamId(team.id);
+                      setQuickAddPlayerId("");
+                    }}
+                  >
+                    + הוסף לקבוצה
+                  </button>
+                </div>
               </article>
             ))}
           </div>
+
+          {quickAddTeamId ? (
+            <form className="quick-add-panel" onSubmit={quickAddToTeam}>
+              <div>
+                <strong>הוסף שחקן לקבוצה</strong>
+                <div className="mini muted">
+                  {game?.teams.find((team) => team.id === quickAddTeamId)?.name}
+                </div>
+              </div>
+              <select
+                className="select"
+                value={quickAddPlayerId}
+                onChange={(event) => setQuickAddPlayerId(event.target.value)}
+                required
+              >
+                <option value="">בחר שחקן</option>
+                {players.map((player) => (
+                  <option key={player._id} value={player._id}>
+                    {player.name} - {player.phone}
+                  </option>
+                ))}
+              </select>
+              <div className="inline-actions">
+                <button className="button">הוסף</button>
+                <button className="button secondary" type="button" onClick={() => setQuickAddTeamId("")}>
+                  סגור
+                </button>
+              </div>
+            </form>
+          ) : null}
         </div>
       </div>
 
       <div className="admin-grid" style={{ marginTop: 14 }}>
-        <section className="card">
-          <h2 className="card-title">הוסף שחקן</h2>
-          <form className="form-grid" onSubmit={addPlayer}>
-            <input className="input" placeholder="שם" value={newPlayer.name} onChange={(e) => setNewPlayer({ ...newPlayer, name: e.target.value })} required />
-            <input className="input" placeholder="טלפון" value={newPlayer.phone} onChange={(e) => setNewPlayer({ ...newPlayer, phone: e.target.value })} required />
-            <input className="input" type="file" accept="image/*" onChange={handleNewPlayerFile} />
-            <select className="select" value={newPlayer.teamId} onChange={(e) => setNewPlayer({ ...newPlayer, teamId: e.target.value })}>
-              <option value="">ללא קבוצה</option>
-              {game?.teams.map((team) => <option key={team.id} value={team.id}>{team.name}</option>)}
-            </select>
-            <button className="button">הוסף</button>
-          </form>
-        </section>
-
         <section className="card">
           <h2 className="card-title">שחקנים בחוץ</h2>
           <div className="list" onDragOver={(event) => event.preventDefault()} onDrop={() => dragPlayerId && movePlayer(dragPlayerId, "outside")}>
@@ -197,7 +234,20 @@ export default function AdminDashboard() {
                   <input className="input" value={player.name} onChange={(e) => updatePlayer(player._id, { name: e.target.value })} />
                   <div className="mini muted">{player.phone}</div>
                 </div>
-                <button className="button danger" onClick={() => deletePlayer(player._id)}>מחק</button>
+                <div className="inline-actions">
+                  <select
+                    className="select compact-select"
+                    defaultValue=""
+                    onChange={(event) => {
+                      if (event.target.value) movePlayer(player._id, event.target.value);
+                      event.target.value = "";
+                    }}
+                  >
+                    <option value="">שבץ</option>
+                    {game?.teams.map((team) => <option key={team.id} value={team.id}>{team.name}</option>)}
+                  </select>
+                  <button className="button danger" onClick={() => deletePlayer(player._id)}>מחק</button>
+                </div>
               </div>
             )) : <div className="empty">אין שחקנים בחוץ</div>}
           </div>
@@ -217,6 +267,20 @@ export default function AdminDashboard() {
               </div>
             ))}
           </div>
+        </section>
+
+        <section className="card add-player-card">
+          <h2 className="card-title">הוסף שחקן חדש</h2>
+          <form className="form-grid" onSubmit={addPlayer}>
+            <input className="input" placeholder="שם" value={newPlayer.name} onChange={(e) => setNewPlayer({ ...newPlayer, name: e.target.value })} required />
+            <input className="input" placeholder="טלפון" value={newPlayer.phone} onChange={(e) => setNewPlayer({ ...newPlayer, phone: e.target.value })} required />
+            <input className="input" type="file" accept="image/*" onChange={handleNewPlayerFile} />
+            <select className="select" value={newPlayer.teamId} onChange={(e) => setNewPlayer({ ...newPlayer, teamId: e.target.value })}>
+              <option value="">ללא קבוצה</option>
+              {game?.teams.map((team) => <option key={team.id} value={team.id}>{team.name}</option>)}
+            </select>
+            <button className="button">הוסף שחקן</button>
+          </form>
         </section>
       </div>
     </main>
