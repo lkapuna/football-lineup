@@ -292,18 +292,12 @@ button {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(var(--line), var(--line)) 50% 0 / 35% 4px no-repeat,
-    linear-gradient(var(--line), var(--line)) 32.5% 0 / 4px 58px no-repeat,
-    linear-gradient(var(--line), var(--line)) 67.5% 0 / 4px 58px no-repeat,
-    linear-gradient(var(--line), var(--line)) 50% 58px / 35% 4px no-repeat,
-    radial-gradient(ellipse at 50% 58px, transparent 0 48px, var(--line) 49px 53px, transparent 54px),
-    linear-gradient(var(--line), var(--line)) 0 100% / calc(50% - 36px) 4px no-repeat,
-    linear-gradient(var(--line), var(--line)) 100% 100% / calc(50% - 36px) 4px no-repeat,
-    linear-gradient(var(--line), var(--line)) 50% 100% / 72px 4px no-repeat,
-    linear-gradient(var(--line), var(--line)) calc(50% - 36px) calc(100% - 24px) / 4px 24px no-repeat,
-    linear-gradient(var(--line), var(--line)) calc(50% + 36px) calc(100% - 24px) / 4px 24px no-repeat,
-    linear-gradient(var(--line), var(--line)) 50% calc(100% - 24px) / 72px 4px no-repeat,
-    radial-gradient(circle at 50% calc(100% - 6px), var(--line) 0 5px, transparent 6px);
+    linear-gradient(var(--line), var(--line)) 50% 0 / 28% 4px no-repeat,
+    linear-gradient(var(--line), var(--line)) 36% 0 / 4px 86px no-repeat,
+    linear-gradient(var(--line), var(--line)) 64% 0 / 4px 86px no-repeat,
+    linear-gradient(var(--line), var(--line)) 50% 86px / 28% 4px no-repeat,
+    linear-gradient(var(--line), var(--line)) 0 100% / 100% 4px no-repeat,
+    radial-gradient(ellipse at 50% 100%, transparent 0 35px, var(--line) 36px 40px, transparent 41px);
 }
 
 .team-field::after {
@@ -312,8 +306,8 @@ button {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 0 0, transparent 0 30px, var(--line) 31px 35px, transparent 36px),
-    radial-gradient(circle at 100% 0, transparent 0 30px, var(--line) 31px 35px, transparent 36px);
+    radial-gradient(circle at 0 0, transparent 0 48px, var(--line) 49px 53px, transparent 54px),
+    radial-gradient(circle at 100% 0, transparent 0 48px, var(--line) 49px 53px, transparent 54px);
 }
 
 .field-title {
@@ -510,24 +504,18 @@ button {
 
   .team-field::before {
     background:
-      linear-gradient(var(--line), var(--line)) 50% 0 / 36% 3px no-repeat,
-      linear-gradient(var(--line), var(--line)) 32% 0 / 3px 42px no-repeat,
-      linear-gradient(var(--line), var(--line)) 68% 0 / 3px 42px no-repeat,
-      linear-gradient(var(--line), var(--line)) 50% 42px / 36% 3px no-repeat,
-      radial-gradient(ellipse at 50% 42px, transparent 0 36px, var(--line) 37px 40px, transparent 41px),
-      linear-gradient(var(--line), var(--line)) 0 100% / calc(50% - 27px) 3px no-repeat,
-      linear-gradient(var(--line), var(--line)) 100% 100% / calc(50% - 27px) 3px no-repeat,
-      linear-gradient(var(--line), var(--line)) 50% 100% / 54px 3px no-repeat,
-      linear-gradient(var(--line), var(--line)) calc(50% - 27px) calc(100% - 18px) / 3px 18px no-repeat,
-      linear-gradient(var(--line), var(--line)) calc(50% + 27px) calc(100% - 18px) / 3px 18px no-repeat,
-      linear-gradient(var(--line), var(--line)) 50% calc(100% - 18px) / 54px 3px no-repeat,
-      radial-gradient(circle at 50% calc(100% - 5px), var(--line) 0 4px, transparent 5px);
+      linear-gradient(var(--line), var(--line)) 50% 0 / 30% 3px no-repeat,
+      linear-gradient(var(--line), var(--line)) 35% 0 / 3px 56px no-repeat,
+      linear-gradient(var(--line), var(--line)) 65% 0 / 3px 56px no-repeat,
+      linear-gradient(var(--line), var(--line)) 50% 56px / 30% 3px no-repeat,
+      linear-gradient(var(--line), var(--line)) 0 100% / 100% 3px no-repeat,
+      radial-gradient(ellipse at 50% 100%, transparent 0 24px, var(--line) 25px 28px, transparent 29px);
   }
 
   .team-field::after {
     background:
-      radial-gradient(circle at 0 0, transparent 0 22px, var(--line) 23px 26px, transparent 27px),
-      radial-gradient(circle at 100% 0, transparent 0 22px, var(--line) 23px 26px, transparent 27px);
+      radial-gradient(circle at 0 0, transparent 0 32px, var(--line) 33px 36px, transparent 37px),
+      radial-gradient(circle at 100% 0, transparent 0 32px, var(--line) 33px 36px, transparent 37px);
   }
 
   .field-title {
