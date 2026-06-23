@@ -184,7 +184,7 @@ button {
 
 .team-row {
   display: grid;
-  grid-template-columns: 28px 1fr auto;
+  grid-template-columns: 28px 1fr auto 28px;
   align-items: center;
   gap: 8px;
 }
@@ -206,6 +206,27 @@ button {
   color: var(--muted);
   font-size: 13px;
   text-align: left;
+}
+
+.delete-team {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  min-height: 28px;
+  border: 1px solid rgba(156, 43, 43, 0.25);
+  border-radius: 50%;
+  background: #fff;
+  color: #9c2b2b;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.delete-team:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
 }
 
 .bench {
@@ -271,23 +292,18 @@ button {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(var(--line), var(--line)) 50% 0 / 34% 4px no-repeat,
-    linear-gradient(var(--line), var(--line)) 33% 0 / 4px 56px no-repeat,
-    linear-gradient(var(--line), var(--line)) 67% 0 / 4px 56px no-repeat,
-    linear-gradient(var(--line), var(--line)) 50% 56px / 34% 4px no-repeat,
-    linear-gradient(var(--line), var(--line)) 50% 0 / 15% 4px no-repeat,
-    linear-gradient(var(--line), var(--line)) 42.5% 0 / 4px 30px no-repeat,
-    linear-gradient(var(--line), var(--line)) 57.5% 0 / 4px 30px no-repeat,
-    linear-gradient(var(--line), var(--line)) 50% 30px / 15% 4px no-repeat,
-    radial-gradient(ellipse at 50% 56px, transparent 0 51px, var(--line) 52px 56px, transparent 57px),
-    radial-gradient(circle at 50% calc(100% - 10px), var(--line) 0 5px, transparent 6px),
-    linear-gradient(var(--line), var(--line)) 0 100% / 40% 4px no-repeat,
-    linear-gradient(var(--line), var(--line)) 100% 100% / 40% 4px no-repeat,
-    linear-gradient(var(--line), var(--line)) 50% 100% / 12% 4px no-repeat,
-    linear-gradient(var(--line), var(--line)) 44% calc(100% - 24px) / 4px 24px no-repeat,
-    linear-gradient(var(--line), var(--line)) 56% calc(100% - 24px) / 4px 24px no-repeat,
-    linear-gradient(var(--line), var(--line)) 50% calc(100% - 24px) / 12% 4px no-repeat,
-    radial-gradient(ellipse at 50% calc(100% - 24px), transparent 0 28px, var(--line) 29px 33px, transparent 34px);
+    linear-gradient(var(--line), var(--line)) 50% 0 / 35% 4px no-repeat,
+    linear-gradient(var(--line), var(--line)) 32.5% 0 / 4px 58px no-repeat,
+    linear-gradient(var(--line), var(--line)) 67.5% 0 / 4px 58px no-repeat,
+    linear-gradient(var(--line), var(--line)) 50% 58px / 35% 4px no-repeat,
+    radial-gradient(ellipse at 50% 58px, transparent 0 48px, var(--line) 49px 53px, transparent 54px),
+    linear-gradient(var(--line), var(--line)) 0 100% / calc(50% - 36px) 4px no-repeat,
+    linear-gradient(var(--line), var(--line)) 100% 100% / calc(50% - 36px) 4px no-repeat,
+    linear-gradient(var(--line), var(--line)) 50% 100% / 72px 4px no-repeat,
+    linear-gradient(var(--line), var(--line)) calc(50% - 36px) calc(100% - 24px) / 4px 24px no-repeat,
+    linear-gradient(var(--line), var(--line)) calc(50% + 36px) calc(100% - 24px) / 4px 24px no-repeat,
+    linear-gradient(var(--line), var(--line)) 50% calc(100% - 24px) / 72px 4px no-repeat,
+    radial-gradient(circle at 50% calc(100% - 6px), var(--line) 0 5px, transparent 6px);
 }
 
 .team-field::after {
@@ -498,19 +514,14 @@ button {
       linear-gradient(var(--line), var(--line)) 32% 0 / 3px 42px no-repeat,
       linear-gradient(var(--line), var(--line)) 68% 0 / 3px 42px no-repeat,
       linear-gradient(var(--line), var(--line)) 50% 42px / 36% 3px no-repeat,
-      linear-gradient(var(--line), var(--line)) 50% 0 / 15% 3px no-repeat,
-      linear-gradient(var(--line), var(--line)) 42.5% 0 / 3px 23px no-repeat,
-      linear-gradient(var(--line), var(--line)) 57.5% 0 / 3px 23px no-repeat,
-      linear-gradient(var(--line), var(--line)) 50% 23px / 15% 3px no-repeat,
-      radial-gradient(ellipse at 50% 42px, transparent 0 39px, var(--line) 40px 43px, transparent 44px),
-      radial-gradient(circle at 50% calc(100% - 7px), var(--line) 0 4px, transparent 5px),
-      linear-gradient(var(--line), var(--line)) 0 100% / 39% 3px no-repeat,
-      linear-gradient(var(--line), var(--line)) 100% 100% / 39% 3px no-repeat,
-      linear-gradient(var(--line), var(--line)) 50% 100% / 12% 3px no-repeat,
-      linear-gradient(var(--line), var(--line)) 44% calc(100% - 18px) / 3px 18px no-repeat,
-      linear-gradient(var(--line), var(--line)) 56% calc(100% - 18px) / 3px 18px no-repeat,
-      linear-gradient(var(--line), var(--line)) 50% calc(100% - 18px) / 12% 3px no-repeat,
-      radial-gradient(ellipse at 50% calc(100% - 18px), transparent 0 22px, var(--line) 23px 26px, transparent 27px);
+      radial-gradient(ellipse at 50% 42px, transparent 0 36px, var(--line) 37px 40px, transparent 41px),
+      linear-gradient(var(--line), var(--line)) 0 100% / calc(50% - 27px) 3px no-repeat,
+      linear-gradient(var(--line), var(--line)) 100% 100% / calc(50% - 27px) 3px no-repeat,
+      linear-gradient(var(--line), var(--line)) 50% 100% / 54px 3px no-repeat,
+      linear-gradient(var(--line), var(--line)) calc(50% - 27px) calc(100% - 18px) / 3px 18px no-repeat,
+      linear-gradient(var(--line), var(--line)) calc(50% + 27px) calc(100% - 18px) / 3px 18px no-repeat,
+      linear-gradient(var(--line), var(--line)) 50% calc(100% - 18px) / 54px 3px no-repeat,
+      radial-gradient(circle at 50% calc(100% - 5px), var(--line) 0 4px, transparent 5px);
   }
 
   .team-field::after {

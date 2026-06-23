@@ -1,5 +1,5 @@
 const STORAGE_KEY = "football-lineup-builder-v1";
-const APP_VERSION = "1.5.2";
+const APP_VERSION = "1.5.4";
 const TEAM_COLORS = ["#f4f4f4", "#0f172a", "#2f80ed", "#ef4444", "#facc15", "#22c55e"];
 const FORMATION = [
   { x: 50, y: 32 },
@@ -209,9 +209,38 @@ function renderTeams() {
     count.className = "team-count";
     count.textContent = `${playersInTeam(team.id).length}/5`;
 
-    row.append(swatch, input, count);
+    const deleteTeam = document.createElement("button");
+    deleteTeam.className = "delete-team";
+    deleteTeam.type = "button";
+    deleteTeam.textContent = "×";
+    deleteTeam.title = "מחק קבוצה";
+    deleteTeam.setAttribute("aria-label", `מחק את ${team.name}`);
+    deleteTeam.disabled = state.teams.length <= 1;
+    deleteTeam.addEventListener("click", () => {
+      removeTeam(team.id);
+    });
+
+    row.append(swatch, input, count, deleteTeam);
     elements.teamList.append(row);
   });
+}
+
+function removeTeam(teamId) {
+  if (state.teams.length <= 1) {
+    alert("חייבת להישאר לפחות קבוצה אחת");
+    return;
+  }
+
+  const team = state.teams.find((item) => item.id === teamId);
+  if (!team) return;
+  if (!confirm(`למחוק את ${team.name}? השחקנים שלה יחזרו החוצה.`)) return;
+
+  state.players.forEach((player) => {
+    if (player.teamId === teamId) player.teamId = null;
+  });
+  state.teams = state.teams.filter((item) => item.id !== teamId);
+  persist();
+  render();
 }
 
 function renderBench() {
