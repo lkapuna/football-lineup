@@ -258,7 +258,7 @@ button {
   position: relative;
   min-height: 270px;
   overflow: hidden;
-  border: 5px solid var(--line);
+  border: 4px solid var(--line);
   border-radius: 4px;
   background:
     linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 0 12.5%, transparent 12.5% 25%, rgba(255, 255, 255, 0.08) 25% 37.5%, transparent 37.5% 50%, rgba(255, 255, 255, 0.08) 50% 62.5%, transparent 62.5% 75%, rgba(255, 255, 255, 0.08) 75% 87.5%, transparent 87.5%),
@@ -271,13 +271,23 @@ button {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(var(--line), var(--line)) 50% 0 / 36% 4px no-repeat,
-    linear-gradient(var(--line), var(--line)) 32% 0 / 4px 72px no-repeat,
-    linear-gradient(var(--line), var(--line)) 68% 0 / 4px 72px no-repeat,
-    linear-gradient(var(--line), var(--line)) 50% 72px / 36% 4px no-repeat,
-    radial-gradient(ellipse at 50% 72px, transparent 0 54px, var(--line) 55px 59px, transparent 60px),
-    radial-gradient(circle at 50% 79%, var(--line) 0 5px, transparent 6px),
-    linear-gradient(var(--line), var(--line)) 50% 100% / 18% 4px no-repeat;
+    linear-gradient(var(--line), var(--line)) 50% 0 / 34% 4px no-repeat,
+    linear-gradient(var(--line), var(--line)) 33% 0 / 4px 56px no-repeat,
+    linear-gradient(var(--line), var(--line)) 67% 0 / 4px 56px no-repeat,
+    linear-gradient(var(--line), var(--line)) 50% 56px / 34% 4px no-repeat,
+    linear-gradient(var(--line), var(--line)) 50% 0 / 15% 4px no-repeat,
+    linear-gradient(var(--line), var(--line)) 42.5% 0 / 4px 30px no-repeat,
+    linear-gradient(var(--line), var(--line)) 57.5% 0 / 4px 30px no-repeat,
+    linear-gradient(var(--line), var(--line)) 50% 30px / 15% 4px no-repeat,
+    radial-gradient(ellipse at 50% 56px, transparent 0 51px, var(--line) 52px 56px, transparent 57px),
+    radial-gradient(circle at 50% calc(100% - 10px), var(--line) 0 5px, transparent 6px),
+    linear-gradient(var(--line), var(--line)) 0 100% / 40% 4px no-repeat,
+    linear-gradient(var(--line), var(--line)) 100% 100% / 40% 4px no-repeat,
+    linear-gradient(var(--line), var(--line)) 50% 100% / 12% 4px no-repeat,
+    linear-gradient(var(--line), var(--line)) 44% calc(100% - 24px) / 4px 24px no-repeat,
+    linear-gradient(var(--line), var(--line)) 56% calc(100% - 24px) / 4px 24px no-repeat,
+    linear-gradient(var(--line), var(--line)) 50% calc(100% - 24px) / 12% 4px no-repeat,
+    radial-gradient(ellipse at 50% calc(100% - 24px), transparent 0 28px, var(--line) 29px 33px, transparent 34px);
 }
 
 .team-field::after {
@@ -286,7 +296,8 @@ button {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(var(--line), var(--line)) 50% 100% / 100% 4px no-repeat;
+    radial-gradient(circle at 0 0, transparent 0 30px, var(--line) 31px 35px, transparent 36px),
+    radial-gradient(circle at 100% 0, transparent 0 30px, var(--line) 31px 35px, transparent 36px);
 }
 
 .field-title {
@@ -483,18 +494,29 @@ button {
 
   .team-field::before {
     background:
-      linear-gradient(var(--line), var(--line)) 50% 0 / 38% 3px no-repeat,
-      linear-gradient(var(--line), var(--line)) 31% 0 / 3px 48px no-repeat,
-      linear-gradient(var(--line), var(--line)) 69% 0 / 3px 48px no-repeat,
-      linear-gradient(var(--line), var(--line)) 50% 48px / 38% 3px no-repeat,
-      radial-gradient(ellipse at 50% 48px, transparent 0 37px, var(--line) 38px 41px, transparent 42px),
-      radial-gradient(circle at 50% 79%, var(--line) 0 4px, transparent 5px),
-      linear-gradient(var(--line), var(--line)) 50% 100% / 20% 3px no-repeat;
+      linear-gradient(var(--line), var(--line)) 50% 0 / 36% 3px no-repeat,
+      linear-gradient(var(--line), var(--line)) 32% 0 / 3px 42px no-repeat,
+      linear-gradient(var(--line), var(--line)) 68% 0 / 3px 42px no-repeat,
+      linear-gradient(var(--line), var(--line)) 50% 42px / 36% 3px no-repeat,
+      linear-gradient(var(--line), var(--line)) 50% 0 / 15% 3px no-repeat,
+      linear-gradient(var(--line), var(--line)) 42.5% 0 / 3px 23px no-repeat,
+      linear-gradient(var(--line), var(--line)) 57.5% 0 / 3px 23px no-repeat,
+      linear-gradient(var(--line), var(--line)) 50% 23px / 15% 3px no-repeat,
+      radial-gradient(ellipse at 50% 42px, transparent 0 39px, var(--line) 40px 43px, transparent 44px),
+      radial-gradient(circle at 50% calc(100% - 7px), var(--line) 0 4px, transparent 5px),
+      linear-gradient(var(--line), var(--line)) 0 100% / 39% 3px no-repeat,
+      linear-gradient(var(--line), var(--line)) 100% 100% / 39% 3px no-repeat,
+      linear-gradient(var(--line), var(--line)) 50% 100% / 12% 3px no-repeat,
+      linear-gradient(var(--line), var(--line)) 44% calc(100% - 18px) / 3px 18px no-repeat,
+      linear-gradient(var(--line), var(--line)) 56% calc(100% - 18px) / 3px 18px no-repeat,
+      linear-gradient(var(--line), var(--line)) 50% calc(100% - 18px) / 12% 3px no-repeat,
+      radial-gradient(ellipse at 50% calc(100% - 18px), transparent 0 22px, var(--line) 23px 26px, transparent 27px);
   }
 
   .team-field::after {
     background:
-      linear-gradient(var(--line), var(--line)) 50% 100% / 100% 3px no-repeat;
+      radial-gradient(circle at 0 0, transparent 0 22px, var(--line) 23px 26px, transparent 27px),
+      radial-gradient(circle at 100% 0, transparent 0 22px, var(--line) 23px 26px, transparent 27px);
   }
 
   .field-title {
