@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useMemo, useState } from "react";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Palette } from "lucide-react";
 import { api } from "@/lib/client";
 import PlayerCard from "./PlayerCard";
 
@@ -92,7 +92,7 @@ export default function LineupBoard({ game, currentPlayer, pendingRequests = [],
                 aria-label="פתח משחק מציירים ביחד"
                 title="פתח משחק מציירים ביחד"
               >
-                <span className="drawing-logo" aria-hidden="true" />
+                <Palette size={22} aria-hidden="true" />
               </a>
             </>
           ) : null}

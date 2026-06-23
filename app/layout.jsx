@@ -1,4 +1,5 @@
 ﻿import "./globals.css";
+import { Palette } from "lucide-react";
 import { APP_VERSION, DEVELOPER_CREDIT } from "@/lib/version";
 
 export const metadata = {
@@ -18,7 +19,7 @@ export default function RootLayout({ children }) {
           rel="noreferrer"
           dir="rtl"
         >
-          <i className="drawing-logo" aria-hidden="true" />
+          <Palette className="drawing-logo" size={26} aria-hidden="true" />
           <span>
             <strong>משחק מציירים ביחד</strong>
             <small>משחק יצירתי לשחק עם הילדים או עם החברים אונליין</small>

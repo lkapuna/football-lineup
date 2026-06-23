@@ -197,39 +197,12 @@ a {
 }
 
 .drawing-logo {
-  position: relative;
   width: 26px;
   height: 26px;
   flex: 0 0 auto;
-  border-radius: 8px;
-  background: #13233b;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), 0 5px 12px rgba(0, 0, 0, 0.2);
-}
-
-.drawing-logo::before {
-  content: "";
-  position: absolute;
-  inset: 5px 4px 6px 5px;
-  border-radius: 50% 46% 44% 50%;
-  background:
-    radial-gradient(circle at 34% 34%, #37c6ff 0 9%, transparent 10%),
-    radial-gradient(circle at 56% 30%, #ffd95a 0 9%, transparent 10%),
-    radial-gradient(circle at 69% 48%, #6be878 0 9%, transparent 10%),
-    radial-gradient(circle at 50% 64%, #ff5f8f 0 9%, transparent 10%),
-    #f5a0b5;
-  transform: rotate(-10deg);
-}
-
-.drawing-logo::after {
-  content: "";
-  position: absolute;
-  right: 7px;
-  bottom: 7px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #13233b;
-  box-shadow: -9px 1px 0 -1px #13233b;
+  color: #ff6aa2;
+  stroke-width: 2.7;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.55));
 }
 
 .icon-button {
