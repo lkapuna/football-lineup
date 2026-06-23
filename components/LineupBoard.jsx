@@ -84,11 +84,15 @@ export default function LineupBoard({ game, currentPlayer, pendingRequests = [],
               <button className="button secondary" onClick={shareLineupsWhatsapp}>
                 <MessageCircle size={16} /> שתף הרכבים
               </button>
-              <a className="button secondary promo-button" href="https://romi-drawing-game.onrender.com" target="_blank" rel="noreferrer">
-                <span className="drawing-logo" aria-hidden="true">
-                  <span />
-                </span>
-                מציירים ביחד
+              <a
+                className="button secondary promo-button icon-only"
+                href="https://romi-drawing-game.onrender.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="פתח משחק מציירים ביחד"
+                title="פתח משחק מציירים ביחד"
+              >
+                <span className="drawing-logo" aria-hidden="true" />
               </a>
             </>
           ) : null}

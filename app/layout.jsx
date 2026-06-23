@@ -18,9 +18,7 @@ export default function RootLayout({ children }) {
           rel="noreferrer"
           dir="rtl"
         >
-          <i className="drawing-logo" aria-hidden="true">
-            <span />
-          </i>
+          <i className="drawing-logo" aria-hidden="true" />
           <span>
             <strong>משחק מציירים ביחד</strong>
             <small>משחק יצירתי לשחק עם הילדים או עם החברים אונליין</small>
