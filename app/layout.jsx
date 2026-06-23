@@ -11,6 +11,16 @@ export default function RootLayout({ children }) {
     <html lang="he" dir="rtl">
       <body>
         {children}
+        <a
+          className="drawing-promo"
+          href="https://romi-drawing-game.onrender.com"
+          target="_blank"
+          rel="noreferrer"
+          dir="rtl"
+        >
+          <span>משחק מציירים ביחד</span>
+          <strong>פתחו עכשיו</strong>
+        </a>
         <footer className="app-credit" dir="ltr">
           v{APP_VERSION} · Developed by {DEVELOPER_CREDIT}
         </footer>

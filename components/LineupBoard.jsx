@@ -65,6 +65,14 @@ export default function LineupBoard({ game, currentPlayer, pendingRequests = [],
     window.open(`https://wa.me/?text=${encodeURIComponent(`הרכבי כדורגל שבועיים: ${url}`)}`, "_blank");
   }
 
+  function shareAppWhatsapp() {
+    const url = `${window.location.origin}/login`;
+    window.open(
+      `https://wa.me/?text=${encodeURIComponent(`הצטרפו לאפליקציית הרכבי הכדורגל השבועיים: ${url}`)}`,
+      "_blank"
+    );
+  }
+
   async function exportPdf() {
     const canvas = await html2canvas(exportRef.current, { scale: 2, useCORS: true, backgroundColor: "#ffffff" });
     const pdf = new jsPDF("p", "mm", "a4");
@@ -90,6 +98,7 @@ export default function LineupBoard({ game, currentPlayer, pendingRequests = [],
             <>
               <button className="button secondary" onClick={copyShare}><Share2 size={16} /> שתף לינק</button>
               <button className="button secondary" onClick={shareWhatsapp}><MessageCircle size={16} /> וואטסאפ</button>
+              <button className="button secondary" onClick={shareAppWhatsapp}><MessageCircle size={16} /> שתף אפליקציה</button>
             </>
           ) : null}
           <button className="button secondary" onClick={exportPdf}><FileDown size={16} /> ייצא PDF</button>
