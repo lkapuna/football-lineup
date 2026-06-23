@@ -12,11 +12,17 @@ export default function HomePage() {
   const [game, setGame] = useState(null);
   const [pendingRequests, setPendingRequests] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
 
   async function refresh() {
-    const data = await api("/api/game");
-    setGame(data.game);
-    setPendingRequests(data.pendingRequests || []);
+    try {
+      setLoadError("");
+      const data = await api("/api/game");
+      setGame(data.game);
+      setPendingRequests(data.pendingRequests || []);
+    } catch (error) {
+      setLoadError(error.message);
+    }
   }
 
   useEffect(() => {
@@ -53,7 +59,15 @@ export default function HomePage() {
             </section>
           ) : null}
         </aside>
-        {loading ? <section className="surface empty">טוען...</section> : (
+        {loading ? <section className="surface empty">טוען...</section> : loadError ? (
+          <section className="surface empty">
+            <div>
+              <strong>טעינת ההרכבים נכשלה</strong>
+              <p>{loadError}</p>
+              <p className="mini muted">בדוק את משתני הסביבה ב-Render ואת חיבור MongoDB.</p>
+            </div>
+          </section>
+        ) : (
           <LineupBoard game={game} currentPlayer={player} pendingRequests={pendingRequests} onRefresh={refresh} />
         )}
       </div>

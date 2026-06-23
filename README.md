@@ -35,3 +35,12 @@ Required environment variables:
 - `MONGODB_URI`
 - `ADMIN_PHONE_NUMBERS`
 - `NEXT_PUBLIC_APP_URL`
+
+Health check:
+
+```text
+/api/health
+```
+
+If MongoDB is Atlas, make sure Network Access allows Render. For a quick first deploy,
+allow `0.0.0.0/0`, then tighten later if needed.
