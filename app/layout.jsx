@@ -1,4 +1,4 @@
-import "./globals.css";
+﻿import "./globals.css";
 import { APP_VERSION, DEVELOPER_CREDIT } from "@/lib/version";
 
 export const metadata = {
@@ -18,8 +18,14 @@ export default function RootLayout({ children }) {
           rel="noreferrer"
           dir="rtl"
         >
-          <span>משחק מציירים ביחד</span>
-          <strong>פתחו עכשיו</strong>
+          <i className="drawing-logo" aria-hidden="true">
+            <span />
+          </i>
+          <span>
+            <strong>משחק מציירים ביחד</strong>
+            <small>משחק יצירתי לשחק עם הילדים או עם החברים אונליין</small>
+          </span>
+          <b>פתחו עכשיו</b>
         </a>
         <footer className="app-credit" dir="ltr">
           v{APP_VERSION} · Developed by {DEVELOPER_CREDIT}

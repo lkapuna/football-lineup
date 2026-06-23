@@ -1,14 +1,11 @@
-"use client";
+﻿"use client";
 
-import { useMemo, useRef, useState } from "react";
-import { Share2, FileDown, MessageCircle } from "lucide-react";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+import { useMemo, useState } from "react";
+import { MessageCircle } from "lucide-react";
 import { api } from "@/lib/client";
 import PlayerCard from "./PlayerCard";
 
 export default function LineupBoard({ game, currentPlayer, pendingRequests = [], onRefresh, publicOnly = false }) {
-  const exportRef = useRef(null);
   const [message, setMessage] = useState("");
 
   const playerTeam = useMemo(() => {
@@ -54,13 +51,7 @@ export default function LineupBoard({ game, currentPlayer, pendingRequests = [],
     onRefresh?.();
   }
 
-  async function copyShare() {
-    const url = `${window.location.origin}/view/${game._id}`;
-    await navigator.clipboard.writeText(url);
-    setMessage("הלינק הועתק");
-  }
-
-  function shareWhatsapp() {
+  function shareLineupsWhatsapp() {
     const url = `${window.location.origin}/view/${game._id}`;
     window.open(`https://wa.me/?text=${encodeURIComponent(`הרכבי כדורגל שבועיים: ${url}`)}`, "_blank");
   }
@@ -71,15 +62,6 @@ export default function LineupBoard({ game, currentPlayer, pendingRequests = [],
       `https://wa.me/?text=${encodeURIComponent(`הצטרפו לאפליקציית הרכבי הכדורגל השבועיים: ${url}`)}`,
       "_blank"
     );
-  }
-
-  async function exportPdf() {
-    const canvas = await html2canvas(exportRef.current, { scale: 2, useCORS: true, backgroundColor: "#ffffff" });
-    const pdf = new jsPDF("p", "mm", "a4");
-    const width = 210;
-    const height = (canvas.height * width) / canvas.width;
-    pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, width, Math.min(height, 297));
-    pdf.save(`football-lineups-${new Date().toISOString().slice(0, 10)}.pdf`);
   }
 
   if (!game) return <div className="empty">טוען הרכבים...</div>;
@@ -96,16 +78,24 @@ export default function LineupBoard({ game, currentPlayer, pendingRequests = [],
         <div className="topbar-actions">
           {!publicOnly ? (
             <>
-              <button className="button secondary" onClick={copyShare}><Share2 size={16} /> שתף לינק</button>
-              <button className="button secondary" onClick={shareWhatsapp}><MessageCircle size={16} /> וואטסאפ</button>
-              <button className="button secondary" onClick={shareAppWhatsapp}><MessageCircle size={16} /> שתף אפליקציה</button>
+              <button className="button secondary" onClick={shareAppWhatsapp}>
+                <MessageCircle size={16} /> שתף אפליקציה
+              </button>
+              <button className="button secondary" onClick={shareLineupsWhatsapp}>
+                <MessageCircle size={16} /> שתף הרכבים
+              </button>
+              <a className="button secondary promo-button" href="https://romi-drawing-game.onrender.com" target="_blank" rel="noreferrer">
+                <span className="drawing-logo" aria-hidden="true">
+                  <span />
+                </span>
+                מציירים ביחד
+              </a>
             </>
           ) : null}
-          <button className="button secondary" onClick={exportPdf}><FileDown size={16} /> ייצא PDF</button>
         </div>
       </header>
 
-      <div ref={exportRef} className="field-wrap">
+      <div className="field-wrap">
         <div className="teams-grid">
           {game.teams.map((team) => {
             const isFull = team.players.length >= team.maxPlayers;
@@ -127,7 +117,7 @@ export default function LineupBoard({ game, currentPlayer, pendingRequests = [],
                 {!publicOnly ? (
                   <div className="team-footer">
                     {playerTeam?.id === team.id ? (
-                      <button className="icon-button danger" aria-label="צא מהקבוצה" title="צא מהקבוצה" onClick={leave}>−</button>
+                      <button className="icon-button danger" aria-label="צא מהקבוצה" title="צא מהקבוצה" onClick={leave}>-</button>
                     ) : (
                       <button
                         className="icon-button add"
