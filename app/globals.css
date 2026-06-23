@@ -185,6 +185,42 @@ a {
   background: #d69c13;
 }
 
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  min-height: 34px;
+  border: 2px solid rgba(255, 255, 255, 0.88);
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  padding: 0;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+}
+
+.icon-button.danger {
+  background: var(--red);
+}
+
+.icon-button.small {
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  min-height: 24px;
+  border-width: 1px;
+  font-size: 18px;
+}
+
+.icon-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
 .muted {
   color: var(--muted);
 }
@@ -327,8 +363,8 @@ a {
 
 .team-footer {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 8px;
+  bottom: 8px;
   z-index: 4;
   display: flex;
   gap: 8px;
@@ -511,6 +547,19 @@ a {
     min-height: 38px;
     padding: 8px 10px;
     font-size: 13px;
+  }
+
+  .team-footer {
+    right: 6px;
+    bottom: 6px;
+  }
+
+  .icon-button {
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    min-height: 30px;
+    font-size: 22px;
   }
 
   .quick-add-panel {

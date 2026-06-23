@@ -118,10 +118,16 @@ export default function LineupBoard({ game, currentPlayer, pendingRequests = [],
                 {!publicOnly ? (
                   <div className="team-footer">
                     {playerTeam?.id === team.id ? (
-                      <button className="button danger" onClick={leave}>עזוב קבוצה</button>
+                      <button className="icon-button danger" aria-label="צא מהקבוצה" title="צא מהקבוצה" onClick={leave}>−</button>
                     ) : (
-                      <button className="button" disabled={game.locked} onClick={() => join(team)}>
-                        {isFull ? "בקש להיכנס" : "הצטרף לקבוצה"}
+                      <button
+                        className="icon-button add"
+                        disabled={game.locked}
+                        aria-label={isFull ? "בקש להיכנס" : "הצטרף לקבוצה"}
+                        title={isFull ? "בקש להיכנס" : "הצטרף לקבוצה"}
+                        onClick={() => join(team)}
+                      >
+                        +
                       </button>
                     )}
                   </div>

@@ -168,7 +168,14 @@ export default function AdminDashboard() {
                         teamColor={team.color}
                         adminActions={
                           <div className="inline-actions">
-                            <button className="button danger mini" onClick={() => movePlayer(player._id, "outside")}>הוצא</button>
+                            <button
+                              className="icon-button danger small"
+                              aria-label="הוצא מהקבוצה"
+                              title="הוצא מהקבוצה"
+                              onClick={() => movePlayer(player._id, "outside")}
+                            >
+                              −
+                            </button>
                           </div>
                         }
                       />
@@ -177,14 +184,16 @@ export default function AdminDashboard() {
                 </div>
                 <div className="team-footer">
                   <button
-                    className="button secondary"
+                    className="icon-button add"
                     type="button"
+                    aria-label={`הוסף שחקן אל ${team.name}`}
+                    title="הוסף לקבוצה"
                     onClick={() => {
                       setQuickAddTeamId(team.id);
                       setQuickAddPlayerId("");
                     }}
                   >
-                    + הוסף לקבוצה
+                    +
                   </button>
                 </div>
               </article>
